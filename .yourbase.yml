@@ -1,0 +1,13 @@
+dependencies:
+  build: 
+    - homebrew:latest
+  runtime:
+    - homebrew:latest
+
+build_targets:
+  - name: ruby25
+    environment:
+      - PREFIX=2.5
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
