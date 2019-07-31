@@ -11,3 +11,34 @@ build_targets:
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+  - name: ruby24
+    environment:
+      - PREFIX=2.4
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
+  - name: ruby23
+    environment:
+      - PREFIX=2.3
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
+  - name: ruby22
+    environment:
+      - PREFIX=2.2
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
+  - name: ruby21
+    environment:
+      - PREFIX=2.1
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
+  - name: ruby20
+    environment:
+      - PREFIX=2.0
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
+
