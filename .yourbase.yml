@@ -1,10 +1,16 @@
 dependencies:
   build: 
     - homebrew:latest
+    - python:3.6.3
   runtime:
     - homebrew:latest
 
 build_targets:
+  - name: release
+    commands:
+      - pip install -r requirements.txt
+      - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ 
+
   - name: ruby25
     environment:
       - PREFIX=2.5
