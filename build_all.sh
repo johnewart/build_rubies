@@ -12,7 +12,7 @@ for i in ${VERSIONS}; do
   else
     echo "Already built $i"
   fi
-  TARFILE="ruby-$i-$OS-$ARCH-$VERSION.tar.bz2"
+  TARFILE="./archives/ruby-$i-$OS-$ARCH-$VERSION.tar.bz2"
   echo "Compressing $i as $TARFILE..."
-  tar jcf ${TARFILE} ./archives/${i}
+  tar jcf ${TARFILE} ${i}
 done

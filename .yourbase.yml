@@ -10,7 +10,12 @@ build_targets:
     commands:
       - pip install -r requirements.txt
       - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ 
-
+  - name: ruby26
+    environment:
+      - PREFIX=2.6
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
   - name: ruby25
     environment:
       - PREFIX=2.5
