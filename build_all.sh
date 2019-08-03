@@ -1,9 +1,15 @@
 VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}")
 OS=$(uname -s)
 ARCH=$(uname -m) 
-VERSION=$(uname -r)
+OS_VERSION=$(uname -r)
+
+if [ "${OS}" == "Linux" ]; then 
+  OS_VERSION="all"
+fi
 
 mkdir -p ./archives 
+
+export CONFIGURE_OPTS="--disable-install-doc --enable-load-relative"
 
 for i in ${VERSIONS}; do
   if [ ! -d ./$i ]; then
@@ -12,7 +18,8 @@ for i in ${VERSIONS}; do
   else
     echo "Already built $i"
   fi
-  TARFILE="./archives/ruby-$i-$OS-$ARCH-$VERSION.tar.bz2"
+
+  TARFILE="./archives/ruby-$i-$OS-$ARCH-$OS_VERSION.tar.bz2"
   echo "Compressing $i as $TARFILE..."
   tar jcf ${TARFILE} ${i}
 done

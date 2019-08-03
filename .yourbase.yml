@@ -6,46 +6,71 @@ dependencies:
     - homebrew:latest
 
 build_targets:
+  - name: ruby2
+    build_after:
+      - ruby20
+      - ruby21
+      - ruby22
+      - ruby23
+      - ruby24
+      - ruby25
+      - ruby26
+      - ruby27
+
   - name: release
     commands:
       - pip install -r requirements.txt
       - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ 
+
+  - name: ruby27
+    environment:
+      - PREFIX=2.7
+    commands:
+      - brew install ruby-build
+      - bash ./build_all.sh
+
   - name: ruby26
     environment:
       - PREFIX=2.6
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+
   - name: ruby25
     environment:
       - PREFIX=2.5
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+
   - name: ruby24
     environment:
       - PREFIX=2.4
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+
   - name: ruby23
     environment:
       - PREFIX=2.3
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+
   - name: ruby22
     environment:
       - PREFIX=2.2
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+
   - name: ruby21
     environment:
       - PREFIX=2.1
     commands:
       - brew install ruby-build
       - bash ./build_all.sh
+
   - name: ruby20
     environment:
       - PREFIX=2.0
