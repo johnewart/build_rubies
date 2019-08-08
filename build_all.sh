@@ -1,4 +1,4 @@
-VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}")
+VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}" | grep -v dev)
 OS=$(uname -s)
 ARCH=$(uname -m) 
 OS_VERSION=$(uname -r)
