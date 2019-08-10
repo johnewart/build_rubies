@@ -9,6 +9,8 @@ build_targets:
   - name: ubuntu1604
     container:
       image: yourbase/ruby_builder_xenial:latest
+    tags:
+      channel: experimental
     environment:
       - OS_VERSION=xenial
     build_after:
