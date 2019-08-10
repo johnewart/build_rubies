@@ -1,3 +1,5 @@
+PATH="${PWD}/ruby-build/bin:$PATH"
+
 ruby-build --definitions
 
 VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}" | grep -v dev)
@@ -27,3 +29,6 @@ for i in ${VERSIONS}; do
   echo "Compressing $i as $TARFILE..."
   tar jcf ${TARFILE} ${i}
 done
+
+pip install -r requirements.txt
+aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read

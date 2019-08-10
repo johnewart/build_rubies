@@ -4,74 +4,94 @@ dependencies:
   runtime:
 
 build_targets:
-  - name: ubuntu1604
+
+  - name: ruby27_xenial
     container:
       image: yourbase/ruby_builder_xenial:latest
     environment:
-      - OS_VERSION=xenial
-    build_after:
-      - ruby27
-      - ruby26
-      - ruby25
-      - ruby24
-      - ruby23
-      - ruby22
-      - ruby21
-    commands:
-     - pip install -r requirements.txt
-     - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read
-
-  - name: ruby27
-    environment:
       - PREFIX=2.7
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby26
+  - name: ruby26_xenial
+    container:
+      image: yourbase/ruby_builder_xenial:latest
     environment:
-      - PREFIX=2.6
+      - PREFIX=26.
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby25
+  - name: ruby25_xenial
+    container:
+      image: yourbase/ruby_builder_xenial:latest
     environment:
       - PREFIX=2.5
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby24
+  - name: ruby24_xenial
+    container:
+      image: yourbase/ruby_builder_xenial:latest
     environment:
       - PREFIX=2.4
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby23
+
+  - name: ruby23_xenial
+    container:
+      image: yourbase/ruby_builder_xenial:latest
     environment:
       - PREFIX=2.3
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby22
+  - name: ruby22_xenial
+    container:
+      image: yourbase/ruby_builder_xenial:latest
     environment:
       - PREFIX=2.2
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby21
+  - name: ruby21_xenial
+    container:
+      image: yourbase/ruby_builder_xenial:latest
     environment:
       - PREFIX=2.1
+      - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
 
-  - name: ruby20
-    environment:
-      - PREFIX=2.0
-    commands:
-      - bash ./build_all.sh
 
 ci:
   builds:
-    - name: ubuntu1604
-      build_target: ubuntu1604
+    - name: ruby27_xenial
+      build_target: ruby27_xenial
+    - name: ruby26_xenial
+      build_target: ruby26_xenial
+    - name: ruby25_xenial
+      build_target: ruby25_xenial
+    - name: ruby24_xenial
+      build_target: ruby2.7_xenial
+    - name: ruby23_xenial
+      build_target: ruby23_xenial
+    - name: ruby22_xenial
+      build_target: ruby22_xenial
+    - name: ruby21_xenial
+      build_target: ruby21_xenial
     
+
+
+
+
+
+
+
 
