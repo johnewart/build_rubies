@@ -16,16 +16,22 @@ echo "Versions: ${VERSIONS}"
 export CONFIGURE_OPTS="--disable-install-doc --enable-load-relative"
 
 for i in ${VERSIONS}; do
-  if [ ! -d ./$i ]; then
-    echo "Will build $i..."
-    ruby-build $i ./$i
-  else
-    echo "Already built $i"
-  fi
+  TARFILE="ruby-$i-$OS-$ARCH-$OS_VERSION.tar.bz2"
+  IN_S3=$(curl -s -I https://yourbase-build-tools.s3-us-west-2.amazonaws.com/ruby/$TARFILE | grep 200)
+  if [ "$?" == "0" ]; then 
+    echo "$TARFILE already exists in S3!"
+  else 
+    if [ ! -d ./$i ]; then
+      echo "Will build $i..."
+      ruby-build $i ./$i
+    else
+      echo "Already built $i"
+    fi
 
-  TARFILE="./archives/ruby-$i-$OS-$ARCH-$OS_VERSION.tar.bz2"
-  echo "Compressing $i as $TARFILE..."
-  tar jcf ${TARFILE} ${i}
+    OUTFILE="./archives/${TARFILE}"
+    echo "Compressing $i as $TARFILE..."
+    tar jcf ${OUTFILE} ${i}
+  fi 
 done
 
 pip install -r requirements.txt

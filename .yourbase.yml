@@ -18,7 +18,7 @@ build_targets:
     container:
       image: yourbase/ruby_builder_xenial:latest
     environment:
-      - PREFIX=26.
+      - PREFIX=2.6
       - OS_VERSION=xenial
     commands:
       - bash ./build_all.sh
