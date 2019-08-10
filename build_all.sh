@@ -35,4 +35,4 @@ for i in ${VERSIONS}; do
 done
 
 pip install -r requirements.txt
-aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read
+aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read --no-progress
