@@ -8,14 +8,12 @@ dependencies:
 build_targets:
   - name: ubuntu1604
     container:
-      image: yourbase/yb_ubuntu:16.04
+      image: yourbase/ruby_builder_xenial:latest
     environment:
       - OS_VERSION=xenial
-    tags:
-      channel: experimental
     build_after:
       - ruby27
-        #- ruby26
+      - ruby26
         #- ruby25
         #- ruby24
         #- ruby23
