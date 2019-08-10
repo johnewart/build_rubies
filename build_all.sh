@@ -1,7 +1,4 @@
-if [ -z "${AWS_ACCESS_KEY_ID}" ]; then 
-  echo "No AWS credentials present, you need to set them so the images can be uploaded"
-  exit 
-fi 
+ruby-build --definitions
 
 VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}" | grep -v dev)
 OS=$(uname -s)
