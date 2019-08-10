@@ -15,7 +15,7 @@ if [ -z ${OS_VERSION} ]; then
 fi
 
 mkdir -p ./archives 
-
+echo "Versions: ${VERSIONS}"
 export CONFIGURE_OPTS="--disable-install-doc --enable-load-relative"
 
 for i in ${VERSIONS}; do
