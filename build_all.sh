@@ -1,10 +1,17 @@
+if [ -z "${AWS_ACCESS_KEY_ID}" ]; then 
+  echo "No AWS credentials present, you need to set them so the images can be uploaded"
+  exit 
+fi 
+
 VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}" | grep -v dev)
 OS=$(uname -s)
 ARCH=$(uname -m) 
-OS_VERSION=$(uname -r)
+if [ -z ${OS_VERSION} ]; then 
+  OS_VERSION=$(uname -r)
 
-if [ "${OS}" == "Linux" ]; then 
-  OS_VERSION="all"
+  if [ "${OS}" == "Linux" ]; then 
+    OS_VERSION="all"
+  fi
 fi
 
 mkdir -p ./archives 
