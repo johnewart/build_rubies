@@ -1,26 +1,22 @@
 dependencies:
   build: 
-    - homebrew:latest
     - python:3.6.3
   runtime:
-    - homebrew:latest
 
 build_targets:
   - name: ubuntu1604
     container:
       image: yourbase/ruby_builder_xenial:latest
-    tags:
-      channel: experimental
     environment:
       - OS_VERSION=xenial
     build_after:
       - ruby27
       - ruby26
-        #- ruby25
-        #- ruby24
-        #- ruby23
-        #- ruby22
-        #- ruby21
+      - ruby25
+      - ruby24
+      - ruby23
+      - ruby22
+      - ruby21
     commands:
      - pip install -r requirements.txt
      - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read
