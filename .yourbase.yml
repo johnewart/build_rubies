@@ -146,7 +146,7 @@ ci:
     - name: ruby25_xenial
       build_target: ruby25_xenial
     - name: ruby24_xenial
-      build_target: ruby2.7_xenial
+      build_target: ruby24_xenial
     - name: ruby23_xenial
       build_target: ruby23_xenial
     - name: ruby22_xenial
@@ -161,7 +161,7 @@ ci:
     - name: ruby25_bionic
       build_target: ruby25_bionic
     - name: ruby24_bionic
-      build_target: ruby2.7_bionic
+      build_target: ruby24_bionic
     - name: ruby23_bionic
       build_target: ruby23_bionic
     - name: ruby22_bionic
