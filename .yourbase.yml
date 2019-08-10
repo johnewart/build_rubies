@@ -11,17 +11,19 @@ build_targets:
       image: yourbase/yb_ubuntu:16.04
     environment:
       - OS_VERSION=xenial
+    tags:
+      channel: experimental
     build_after:
       - ruby27
-      - ruby26
-      - ruby25
-      - ruby24
-      - ruby23
-      - ruby22
-      - ruby21
+        #- ruby26
+        #- ruby25
+        #- ruby24
+        #- ruby23
+        #- ruby22
+        #- ruby21
     commands:
      - pip install -r requirements.txt
-     - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ 
+     - aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read
 
   - name: ruby27
     environment:
