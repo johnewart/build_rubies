@@ -1,7 +1,5 @@
 PATH="${PWD}/ruby-build/bin:$PATH"
 
-ruby-build --definitions
-
 VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}" | grep -v dev)
 OS=$(uname -s)
 ARCH=$(uname -m) 
