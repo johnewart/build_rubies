@@ -3,6 +3,8 @@ if [ -z "${AWS_ACCESS_KEY_ID}" ]; then
   exit 
 fi 
 
+env
+
 VERSIONS=$(ruby-build --definitions | grep "^${PREFIX}" | grep -v dev)
 OS=$(uname -s)
 ARCH=$(uname -m) 
