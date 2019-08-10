@@ -70,6 +70,71 @@ build_targets:
       - bash ./build_all.sh
 
 
+  - name: ruby27_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.7
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+  - name: ruby26_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.6
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+  - name: ruby25_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.5
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+  - name: ruby24_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.4
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+
+  - name: ruby23_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.3
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+  - name: ruby22_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.2
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+  - name: ruby21_bionic
+    container:
+      image: yourbase/yb_ubuntu:18.04
+    environment:
+      - PREFIX=2.1
+      - OS_VERSION=bionic
+    commands:
+      - bash ./build_all.sh
+
+
 ci:
   builds:
     - name: ruby27_xenial
@@ -87,6 +152,22 @@ ci:
     - name: ruby21_xenial
       build_target: ruby21_xenial
     
+    - name: ruby27_bionic
+      build_target: ruby27_bionic
+    - name: ruby26_bionic
+      build_target: ruby26_bionic
+    - name: ruby25_bionic
+      build_target: ruby25_bionic
+    - name: ruby24_bionic
+      build_target: ruby2.7_bionic
+    - name: ruby23_bionic
+      build_target: ruby23_bionic
+    - name: ruby22_bionic
+      build_target: ruby22_bionic
+    - name: ruby21_bionic
+      build_target: ruby21_bionic
+    
+
 
 
 
