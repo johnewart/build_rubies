@@ -131,7 +131,9 @@ build_targets:
     environment:
       - PREFIX=2.1
       - OS_VERSION=bionic
+      - CC=/usr/bin/gcc-6
     commands:
+      - apt -y install gcc-6
       - bash ./build_all.sh
 
 
