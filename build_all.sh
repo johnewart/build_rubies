@@ -44,7 +44,7 @@ for i in ${VERSIONS}; do
       fi 
 
       ruby-build $i ${RUBY_DIR}
-      if [ "$?" == "0"]; then 
+      if [ "$?" == "0" ]; then 
         SUCCESSFUL+=( "$i" )
         OUTFILE="./archives/${TARFILE}"
         echo "Done! Compressing $i as $OUTFILE..."
