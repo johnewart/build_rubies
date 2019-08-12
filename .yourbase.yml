@@ -138,7 +138,7 @@ build_targets:
       - CC=/usr/bin/gcc-6
     commands:
       - apt -y install gcc-6
-      - apt -y remove libyaml libyaml-dev
+      - apt -y remove libyaml-dev
       - bash ./build_all.sh
 
 
