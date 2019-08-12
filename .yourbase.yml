@@ -115,7 +115,7 @@ build_targets:
       - OS_VERSION=bionic
       - CC=/usr/bin/gcc-6
     commands:
-      - apt -y install gcc-6 libyaml-dev
+      - apt -y install gcc-6
       - bash ./build_all.sh
 
   - name: ruby22_bionic
@@ -124,9 +124,9 @@ build_targets:
     environment:
       - PREFIX=2.2
       - OS_VERSION=bionic
-    commands:
       - CC=/usr/bin/gcc-6
-      - apt -y install gcc-6 libyaml-dev
+    commands:
+      - apt -y install gcc-6 
       - bash ./build_all.sh
 
   - name: ruby21_bionic
@@ -137,7 +137,8 @@ build_targets:
       - OS_VERSION=bionic
       - CC=/usr/bin/gcc-6
     commands:
-      - apt -y install gcc-6 libyaml-dev
+      - apt -y install gcc-6
+      - apt -y remove libyaml libyaml-dev
       - bash ./build_all.sh
 
 
