@@ -15,6 +15,8 @@ mkdir -p ./archives
 echo "Versions: ${VERSIONS}"
 export DEFAULT_CONFIGURE_OPTS="--disable-install-doc --enable-load-relative"
 
+pip install -r requirements.txt
+
 FAILED=()
 SUCCESSFUL=()
 BUILD_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -45,11 +47,15 @@ for i in ${VERSIONS}; do
 
       ruby-build $i ${RUBY_DIR}
       if [ "$?" == "0" ]; then 
+        echo "Successfully built Ruby v${i}"
         SUCCESSFUL+=( "$i" )
         OUTFILE="./archives/${TARFILE}"
         echo "Done! Compressing $i as $OUTFILE..."
         tar jcf ${OUTFILE} ${i}
+        # Sync after successful build in case of partial failure
+        aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read --no-progress
       else   
+        echo "Failed to build Ruby v${i}"
         FAILED+=( "$i" )
       fi
     else
@@ -58,5 +64,3 @@ for i in ${VERSIONS}; do
   fi 
 done
 
-pip install -r requirements.txt
-aws s3 sync ./archives/ s3://yourbase-build-tools/ruby/ --acl public-read --no-progress
